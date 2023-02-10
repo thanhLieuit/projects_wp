@@ -1,6 +1,7 @@
 import React from 'react';
-
-
+import { Children } from 'react/cjs/react.production.min';
+import ChildComponents from './ChildComponents';
+import FromComponent from './FromComponent';
 
 /**
  * jsx => return block
@@ -8,33 +9,36 @@ import React from 'react';
  */
 class MyComponents extends React.Component {
     state = {
-        name: '',
-        study: 'math',
+        ArrJobs: [
+            { id: 'abcjpb1', title: 'Dev', salary: '500' },
+            { id: 'abcjpb2', title: 'Tes', salary: '400' },
+            { id: 'abcjpb3', title: 'PM', salary: '1500' }
+        ]
     }
-    handleOnChangeName = (event) => {
+    addJob = (job) => {
         this.setState({
-            name: event.target.value
+            ArrJobs: [...this.state.ArrJobs, job]
         })
     }
-    handleOnClickButton = () => {
-        alert('Click me');
+    deleteJob = (job) => {
+        let currentJobs = this.state.ArrJobs;
+        currentJobs = currentJobs.filter(item => item.id !== job.id);
+        this.setState({
+            ArrJobs: currentJobs,
+        })
     }
     render() {
 
         return (
             <>
-                <div className="firt">
-                    <input value={this.state.name} type="text"
-                        onChange={(event) => this.handleOnChangeName(event)}
-                    />
-                    my name is {this.state.name}
-                </div>
-                <div className="second">
-                    i love study {this.state.study}
-                </div>
-                <div className='third'>
-                    <button onClick={() => this.handleOnClickButton()}>click Me !!</button>
-                </div>
+                <FromComponent
+                    addJob={this.addJob}
+                />
+                <ChildComponents
+                    ArrJobs={this.state.ArrJobs}
+                    deleteJob={this.deleteJob}
+                />
+
             </>
         )
     }

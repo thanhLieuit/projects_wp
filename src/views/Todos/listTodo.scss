@@ -1,0 +1,40 @@
+.list-todo-container {
+    .list-todo-add {
+        input {
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: red;
+            padding: 5px 20px 5px 20px;
+            border-radius: 10px;
+        }
+    }
+
+    .list-todo-content {
+        .todo-child {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+
+            &:first-child {
+                border-top: 1px solid #eee;
+                margin-top: 10px;
+            }
+
+            span {
+                font-weight: 700;
+                margin-right: 10px;
+
+            }
+
+            button {
+                background-color: blue;
+                padding: 5px 20px 5px 20px;
+                border-radius: 10px;
+                margin-right: 5px;
+                color: #fff;
+            }
+        }
+    }
+}
